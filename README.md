@@ -51,7 +51,9 @@ $ pip install espionage
 - [ ] 🎁 Dns Services ️
     - By using [Dns-Lg](http://www.dns-lg.com)
 
-[![Build Status](https://app.travis-ci.com/iAbdullahMughal/espionage.svg?branch=main)](https://app.travis-ci.com/iAbdullahMughal/espionage)
+
+### Status 
+[![CircleCI](https://circleci.com/gh/iAbdullahMughal/espionage/tree/main.svg?style=svg)](https://circleci.com/gh/iAbdullahMughal/espionage/tree/main) [![Build Status](https://app.travis-ci.com/iAbdullahMughal/espionage.svg?branch=main)](https://app.travis-ci.com/iAbdullahMughal/espionage) 
 ### 👁️‍🗨️ Domain Availability Check
 
 - This module check if a domain is available or taken already.
