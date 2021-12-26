@@ -1,5 +1,5 @@
 <p align="center">
-<img src="./others/espionage.png" />
+<img src="https://lh3.googleusercontent.com/NfYrnpBuMyqZGwGqBZ9HR7j0NmuZWaEIOdWq-ZBxoylsWHhVaTXKD_8VJPhZk_-QFyUoJZFRxAYeYM5iphN2A0UeyqD_Hd8w-rpRhzlYQWv01o9GK9Q9mWnTPulNkedLjlZMdkz9" />
 </p>
 
 ---
@@ -16,7 +16,7 @@
 ### Cloning Repo
 
 - Download & install `python 3.6` or above
-- Download or clone the repo. 
+- Download or clone the repo.
 - Create a virtual environment execute followings
 
 ```shell
@@ -26,16 +26,18 @@ $ pip install -r requirements.txt
 $ python setup.py build
 $ python setup.py install
 ```
+
 <p align="center">
-<img src="./others/installed_espionage.gif" />
+<img src="https://lh3.googleusercontent.com/q7y3lieNJ4wTPXHr2nzmsgW_Qj4beP4d1ECDxMreOBFLTcGcl5g6q1E6PEw8RhFTmIiuVYKdFTohfd5YNdb9I3HIU6WQ091Qe_bco3LzDZ2ruA6JEhdJdt0Uyrtu4ycu6frhAYck" />
 </p>
 
 ### Using Pip
+
 - You can install `espionage` by using pip command.
+
 ```shell
 $ pip install espionage
 ```
-
 
 # 🔗 Modules Currently Supported
 
@@ -52,7 +54,7 @@ $ pip install espionage
 
 - This module check if a domain is available or taken already.
 
-*A domain name locates an organization or other entity on the Internet.* 
+*A domain name locates an organization or other entity on the Internet.*
 
 ### 📖 Whois Check
 
@@ -70,7 +72,9 @@ Current module support following in code
   }
 }
 ```
+
 #### *Domain Registrant Info*
+
 ```json
  {
   "registrant_info": {
@@ -89,9 +93,10 @@ Current module support following in code
 ```
 
 #### *Name server records*
+
 ```json
  {
-   "name_server": {
+  "name_server": {
     "MX": [
       [
         "MX",
@@ -107,26 +112,28 @@ Current module support following in code
 ```
 
 #### *History Records*
+
 ```json
 {
   "History": [
-      [
-        "Date",
-        "Status",
-        "Name Server"
-      ],
-      [
-        "2014-10-09",
-        "Transferred to",
-        "consolidated.net"
-      ]
+    [
+      "Date",
+      "Status",
+      "Name Server"
+    ],
+    [
+      "2014-10-09",
+      "Transferred to",
+      "consolidated.net"
     ]
+  ]
 }
 
 
 ```
+
 <p align="center">
-<img src="./others/console_espoinage.gif" />
+<img src="https://lh5.googleusercontent.com/k4aYijBl_3uZByKt019ALda93wNcnLSPuKUt1I8I8A4wahMrAHtekyUzu8gvi3qSoB_4Y6e78El9JGOLy4aLdC23vm-dDuqRjhBfliEKMorA2kokG0ED5drQnC25HdHXkN825t1a" />
 </p>
 
 
