@@ -14,7 +14,7 @@ def main():
     domain = _input.domain
     if isinstance(domain, str):
         # Check domain availability
-        c_availability = DomainAvailable(domain=domain)
+        c_availability = DomainAvailable(_domain=domain)
         da_console = cAvailable(console=console)
         da_console.print(c_availability.domain_available(), domain)
 
@@ -25,7 +25,7 @@ def main():
     elif isinstance(domain, list):
         for _domain in domain:
             # Check domain availability
-            c_availability = DomainAvailable(domain=_domain)
+            c_availability = DomainAvailable(_domain=_domain)
             da_console = cAvailable(console=console)
             da_console.print(c_availability.domain_available(), _domain)
 

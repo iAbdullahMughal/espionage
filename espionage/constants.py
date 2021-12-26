@@ -1,7 +1,7 @@
 class Constants:
     _author = "muhammad abdullah"
     _email = "iamabdullahmughal@gmail.com"
-    _version = "0.0.3"
+    _version = "0.0.4"
 
     @property
     def author(self):

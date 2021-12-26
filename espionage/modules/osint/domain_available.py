@@ -11,8 +11,8 @@ from urllib.parse import urlencode
 class DomainAvailable:
     __ENDPOINT__ = "https://madchecker.com/api/domain/get-information"
 
-    def __init__(self, domain):
-        self._domain = domain
+    def __init__(self, _domain):
+        self._domain = _domain
 
     def domain_available(self) -> bool:
 

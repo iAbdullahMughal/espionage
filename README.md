@@ -9,6 +9,7 @@
 
 ---
 
+
 # <p> <img width="25" height="25" src="https://cdn-icons-png.flaticon.com/512/1716/1716764.png">  Work in progress ... </p>
 
 ## ⚙️Install espionage on system
@@ -50,6 +51,7 @@ $ pip install espionage
 - [ ] 🎁 Dns Services ️
     - By using [Dns-Lg](http://www.dns-lg.com)
 
+[![Build Status](https://app.travis-ci.com/iAbdullahMughal/espionage.svg?branch=main)](https://app.travis-ci.com/iAbdullahMughal/espionage)
 ### 👁️‍🗨️ Domain Availability Check
 
 - This module check if a domain is available or taken already.
