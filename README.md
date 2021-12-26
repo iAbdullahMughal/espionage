@@ -29,6 +29,7 @@ $ python setup.py install
 <p align="center">
 <img src="./others/installed_espionage.gif" />
 </p>
+
 ### Using Pip
 - You can install `espionage` by using pip command.
 ```shell
@@ -129,4 +130,8 @@ Current module support following in code
 </p>
 
 
-``Educational project``
+<pre> ⚠️This is an educational project. Don't abuse services.</pre>
+
+
+
+ 
