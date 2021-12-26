@@ -22,7 +22,7 @@ jobs:
           name: Running tests
           command: |
             . venv/bin/activate
-            python3 espionage/tests/tests.py
+            python3 -m espionage.tests.tests
       - store_artifacts:
           path: test-reports/
           destination: python_app
