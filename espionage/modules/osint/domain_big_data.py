@@ -1,8 +1,10 @@
 import requests
 
-from espionage import UrlParser
+from espionage.modules.parser.url_parser import UrlParser
 from bs4 import BeautifulSoup
-import ipaddress
+
+from espionage.console.input import Input
+from espionage.console.c_dbdata import CDBData
 
 
 class DomainBigData:
@@ -34,21 +36,25 @@ class DomainBigData:
 
     @staticmethod
     def __extract_table_data__(div_data, record_info):
-        tables = div_data.findChildren('table')
-        table_card = tables[0]
-        rows = table_card.findChildren(['th', 'tr'])
-        for row in rows:
+        try:
+            tables = div_data.findChildren('table')
+            if tables:
+                table_card = tables[0]
+                rows = table_card.findChildren(['th', 'tr'])
+                for row in rows:
 
-            cells = row.findChildren('td')
-            _web_record = []
-            for cell in cells:
-                if cell.text:
-                    value = cell.text.rstrip().strip()
-                    if value and "Check abuses from" not in value:
-                        _web_record.append(value)
-            if len(_web_record) > 1:
-                _extracted_value = _web_record[1]
-                record_info[_web_record[0]] = _extracted_value
+                    cells = row.findChildren('td')
+                    _web_record = []
+                    for cell in cells:
+                        if cell.text:
+                            value = cell.text.rstrip().strip()
+                            if value and "Check abuses from" not in value:
+                                _web_record.append(value)
+                    if len(_web_record) > 1:
+                        _extracted_value = _web_record[1]
+                        record_info[_web_record[0]] = _extracted_value
+        except AttributeError:
+            pass
         return record_info
 
     def __website_info__(self, html_soup):
@@ -182,48 +188,21 @@ class DomainBigData:
 
         return domain_bigdata
 
-    def __whois_ip__(self, html_content):
-        whois_ip = html_content.find(id="idIP")
-        whois_record = {}
-        whois_record = self.__extract_table_data__(whois_ip, whois_record)
-        return whois_record
 
-    @staticmethod
-    def __website_on_ip__(html_content):
-        site_on_same_ip = []
-        tld_cards = html_content.find(id="MainMaster_divRptDomainsOnSameIP")
-        links = tld_cards.findChildren("a")
-        for link in links:
-            site_on_same_ip.append(link.string)
-        return site_on_same_ip
+if __name__ == '__main__':
+    _input = Input()
+    domain = _input.domain
+    _domain_big_data = DomainBigData()
+    if isinstance(domain, str):
+        result = _domain_big_data.record_by_domain_address(domain=domain)
 
-    def parse_ip_records(self, html_content=None):
-        ip_details = {}
-        r = open("content.html", "r")
-        html_content = r.read()
-        soup = BeautifulSoup(html_content, 'html.parser')
-        whois_ip = self.__whois_ip__(soup)
+        if result:
+            c_data = CDBData()
+            c_data.print(whois=result)
 
-        if whois_ip:
-            ip_details["basic_info"] = whois_ip
-        sites_on_ip = self.__website_on_ip__(soup)
-
-        if sites_on_ip:
-            ip_details["sites_on_ip"] = sites_on_ip
-
-        print(ip_details)
-
-    def record_by_ip_address(self, ip_address):
-        ip_bigdata = {}
-        if not ip_address:
-            raise "IP address was not provided."
-
-        try:
-            ipaddress.ip_address(ip_address)
-        except ValueError:
-            raise "Invalid ip address was provided"
-        with requests.get('https://domainbigdata.com/{}'.format(ip_address), headers=self.__headers,
-                          cookies=self.__cookies) as response:
-            result_status = response.status_code
-            if result_status == 200:
-                print(response.content)
+    elif isinstance(domain, list):
+        for _domain in domain:
+            result = _domain_big_data.record_by_domain_address(domain=_domain)
+            if result:
+                c_data = CDBData()
+                c_data.print(whois=result)

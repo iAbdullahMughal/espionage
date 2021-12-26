@@ -1,23 +1,39 @@
-import os
-import argparse
-import time
+from espionage.console.input import Input
+from rich.console import Console
+from espionage.console import cMain
+from espionage.modules.osint.domain_available import DomainAvailable
+from espionage.modules.osint.domain_big_data import DomainBigData
+from espionage.console import cAvailable, cDomainWhois
 
-from espionage.modules.extra.banner import Banner
 
-__version__ = "0.0.1"
+def main():
+    console = Console()
+    c_main = cMain(console=console)
+    c_main.banner()
+    _input = Input()
+    domain = _input.domain
+    if isinstance(domain, str):
+        # Check domain availability
+        c_availability = DomainAvailable(domain=domain)
+        da_console = cAvailable(console=console)
+        da_console.print(c_availability.domain_available(), domain)
 
+        # Check domain whois records
+        c_whois = DomainBigData()
+        db_console = cDomainWhois(console=console)
+        db_console.print(c_whois.record_by_domain_address(domain=domain, extended_report=_input.extended))
+    elif isinstance(domain, list):
+        for _domain in domain:
+            # Check domain availability
+            c_availability = DomainAvailable(domain=_domain)
+            da_console = cAvailable(console=console)
+            da_console.print(c_availability.domain_available(), _domain)
 
-def init():
-    parser = argparse.ArgumentParser(
-        description="Espionage " + __version__)
-    parser.add_argument("-d", dest="domain", required=True, type=str, help="Domain address for recon operation.")
-    args = parser.parse_args()
+            # Check domain whois records
+            c_whois = DomainBigData()
+            db_console = cDomainWhois(console=console)
+            db_console.print(c_whois.record_by_domain_address(domain=_domain, extended_report=_input.extended))
 
 
 if __name__ == '__main__':
-    os.system('cls' if os.name == 'nt' else 'clear')
-
-    banner = Banner(version=__version__)
-    banner.banner()
-    time.sleep(.5)
-    init()
+    main()

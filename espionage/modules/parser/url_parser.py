@@ -43,3 +43,9 @@ class UrlParser:
         domain = self.__extract_root__(domain)
 
         return domain
+
+    def for_md(self):
+        domain = self.domain
+        domain = self.__remove_http__(domain)
+        domain = self.__extract_root__(domain)
+        return domain

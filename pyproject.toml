@@ -2,8 +2,5 @@
 requires = [
     "setuptools>=42",
     "wheel",
-    "requests~=2.26.0",
-    "beautifulsoup4",
-    "lxml",
 ]
 build-backend = "setuptools.build_meta"

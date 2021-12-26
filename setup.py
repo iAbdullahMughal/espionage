@@ -6,22 +6,29 @@ version = "0.0.1"
 
 packages = [
     "espionage",
-    "espionage.modules",
-    "espionage.modules.extra",
-    "espionage.modules.whois",
+    "espionage.console",
+    "espionage.modules.osint",
+    "espionage.modules.parser",
 ]
 package_data = {
-    'domaintrails': [
-        'README.html',
-        'LICENSE.txt',
+    'espionage': [
+        'README.md',
+        'LICENSE',
     ]
 }
-# https://github.com/iAbdullahMughal/espionage
 entry_points = {
     'console_scripts': [
         'espionage=espionage.main:main',
     ],
 }
+
+
+def read_requirements():
+    with open("requirements.txt") as f:
+        return f.read().splitlines()
+
+
+requirements = read_requirements()
 
 setuptools.setup(
     name="espionage",
@@ -36,11 +43,13 @@ setuptools.setup(
     project_urls={
         "Bug Tracker": "https://github.com/iAbdullahMughal/espionage/issues",
     },
+    install_requires=requirements,
     classifiers=[
         "Programming Language :: Python :: 3.6",
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
+
     packages=packages,
     package_data=package_data,
     entry_points=entry_points,
