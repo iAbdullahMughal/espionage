@@ -3,6 +3,8 @@ jobs:
   build:
     docker:
       - image: circleci/python:3.6
+    environment:
+      PYTHONPATH: /home/circleci/project/espionage
     steps:
       - checkout
       - restore_cache:
