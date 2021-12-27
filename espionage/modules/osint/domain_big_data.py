@@ -8,13 +8,12 @@ from espionage.console.c_dbdata import CDBData
 
 
 class DomainBigData:
-
     """
     This class provides function which downloads whois records from domainbigdata and then parses
     this downloaded html content and extracts useful information from content, following is
     example of domain cnn.cn
     """
-    __EXTENDED__ = True
+    extended_report = True
 
     def __init__(self):
         """
@@ -225,7 +224,7 @@ class DomainBigData:
 
         if basic_info:
             domain_details["basic_info"] = basic_info
-        if self.__EXTENDED__:
+        if self.extended_report:
             more_tld = self.__extract_tld__(soup)
             if more_tld:
                 domain_details["other_tld"] = more_tld
@@ -257,7 +256,7 @@ class DomainBigData:
         :rtype: dict | None
         """
         domain_bigdata = {}
-        self.__EXTENDED__ = extended_report
+        self.extended_report = extended_report
         if not user_domain:
             return domain_bigdata
         url_parser = UrlParser(user_domain)
@@ -274,10 +273,9 @@ class DomainBigData:
 if __name__ == '__main__':
     _input = Input()
     domain = _input.domain
-    extended = _input.extended
     _domain_big_data = DomainBigData()
     if isinstance(domain, str):
-        result = _domain_big_data.with_domain_name(domain, extended)
+        result = _domain_big_data.with_domain_name(domain, _input.extended)
 
         if result:
             c_data = CDBData()
@@ -285,7 +283,7 @@ if __name__ == '__main__':
 
     elif isinstance(domain, list):
         for _domain in domain:
-            result = _domain_big_data.with_domain_name(_domain, extended)
+            result = _domain_big_data.with_domain_name(_domain, _input.extended)
             if result:
                 c_data = CDBData()
                 c_data.print(whois=result)

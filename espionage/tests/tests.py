@@ -4,9 +4,7 @@ from espionage.modules.osint.domain_big_data import DomainBigData
 
 
 class TestDomainAvailable(unittest.TestCase):
-    """
-    This is unit test case class for domain available
-    """
+    """Domain available unittest cases."""
 
     def test_google_domain(self):
         domain = "www.google.com"
@@ -20,9 +18,7 @@ class TestDomainAvailable(unittest.TestCase):
 
 
 class TestDomainBigData(unittest.TestCase):
-    """
-    This class contains test case for domain big data website.
-    """
+    """ DomainBigData test cases."""
 
     def test_google_domain(self):
         domain = "www.google.com"

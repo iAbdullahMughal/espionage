@@ -1,1 +1,1 @@
-"""This is init file in espionage package."""
+"""Init file in espionage package."""

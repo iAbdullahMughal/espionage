@@ -1,1 +1,1 @@
-"""Init file in parser"""
+"""Init file in parser."""

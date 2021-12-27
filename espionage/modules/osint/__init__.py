@@ -1,1 +1,1 @@
-"""Osint package's init file"""
+"""Osint package's init file."""

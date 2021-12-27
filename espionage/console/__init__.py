@@ -1,4 +1,4 @@
-"""This init function contains console terminal related information"""
+"""Console init py file  contains console terminal related information."""
 
 from espionage.console.c_main import CMain as cMain
 from espionage.console.c_davailable import CDAvailable as cAvailable

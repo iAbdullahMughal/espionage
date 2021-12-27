@@ -1,1 +1,1 @@
-"""This init file lives under tests folder"""
+"""Init file lives under tests folder."""

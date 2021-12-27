@@ -25,7 +25,7 @@ entry_points = {
 
 
 def read_requirements():
-    with open("requirements.txt", 'r') as file_handle:
+    with open("requirements.txt", 'r', encoding='UTF-8') as file_handle:
         return file_handle.read().splitlines()
 
 
