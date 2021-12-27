@@ -53,6 +53,7 @@ $ pip install espionage
 
 
 ### Status 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/dcfc58519fa2419f8b6d38fc31e1b318)](https://app.codacy.com/gh/iAbdullahMughal/espionage?utm_source=github.com&utm_medium=referral&utm_content=iAbdullahMughal/espionage&utm_campaign=Badge_Grade_Settings)
 [![CircleCI](https://circleci.com/gh/iAbdullahMughal/espionage/tree/main.svg?style=svg)](https://circleci.com/gh/iAbdullahMughal/espionage/tree/main) [![Build Status](https://api.codiga.io/project/30529/status/svg)](https://app.codiga.io/public/project/30529/espionage/dashboard)   [![Codacy Badge](https://app.codacy.com/project/badge/Grade/4a00d6efafea4a50a9159c43dc349bfe)](https://www.codacy.com/gh/iAbdullahMughal/espionage/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=iAbdullahMughal/espionage&amp;utm_campaign=Badge_Grade)
 
 [//]: # ( [![Build Status]&#40;https://app.travis-ci.com/iAbdullahMughal/espionage.svg?branch=main&#41;]&#40;https://app.travis-ci.com/iAbdullahMughal/espionage&#41;)
