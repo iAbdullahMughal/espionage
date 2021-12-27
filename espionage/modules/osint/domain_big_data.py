@@ -87,7 +87,7 @@ class DomainBigData:
             raw_text = raw_text.decode_contents().rstrip()
             raw_text = "\n".join(line.strip() for line in raw_text.split("<br/>"))
             raw_text = raw_text.split("\n")
-        except:
+        except AttributeError:
             pass
         return raw_text
 

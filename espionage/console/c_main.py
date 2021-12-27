@@ -1,4 +1,5 @@
-import random
+import secrets
+
 
 from rich.text import Text
 from espionage.constants import Constants
@@ -37,7 +38,7 @@ o888ooooood8 8""888P'  888bod8P' o888o `Y8bod8P' o888o o888o `Y888""8o `8oooooo.
 
     def banner(self):
         constants = Constants()
-        banner_text = random.choice(self._banner_list)
+        banner_text = secrets.choice(self._banner_list)
         project_title = "\n\nEspionage v {} - Domain reconnaissance tool\n".format(constants.version)
         # project_author = "\nBy {}".format(Constants.author)
         # author_email = "\033[4m{}\033[0m".format(Constants.email)
