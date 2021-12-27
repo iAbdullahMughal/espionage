@@ -53,7 +53,9 @@ $ pip install espionage
 
 
 ### Status 
-[![CircleCI](https://circleci.com/gh/iAbdullahMughal/espionage/tree/main.svg?style=svg)](https://circleci.com/gh/iAbdullahMughal/espionage/tree/main) [![Build Status](https://app.travis-ci.com/iAbdullahMughal/espionage.svg?branch=main)](https://app.travis-ci.com/iAbdullahMughal/espionage) 
+[![CircleCI](https://circleci.com/gh/iAbdullahMughal/espionage/tree/main.svg?style=svg)](https://circleci.com/gh/iAbdullahMughal/espionage/tree/main) [![Build Status](https://api.codiga.io/project/30529/status/svg)](https://app.codiga.io/public/project/30529/espionage/dashboard)   [![Codacy Badge](https://app.codacy.com/project/badge/Grade/4a00d6efafea4a50a9159c43dc349bfe)](https://www.codacy.com/gh/iAbdullahMughal/espionage/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=iAbdullahMughal/espionage&amp;utm_campaign=Badge_Grade)
+
+[//]: # ( [![Build Status]&#40;https://app.travis-ci.com/iAbdullahMughal/espionage.svg?branch=main&#41;]&#40;https://app.travis-ci.com/iAbdullahMughal/espionage&#41;)
 ### 👁️‍🗨️ Domain Availability Check
 
 - This module check if a domain is available or taken already.
