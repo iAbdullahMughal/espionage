@@ -6,9 +6,7 @@ from rich.pretty import Pretty
 
 
 class CDBData:
-    """
-    This class prints data collected from domainbigdata site.
-    """
+    """ Console domain big data class for printing results."""
 
     def __init__(self, console: Console = None):
         """
@@ -16,6 +14,7 @@ class CDBData:
         :param console: console for printing results and reports
         :type console: Console
         """
+
         if not console:
             console = Console()
         self._console = console
@@ -32,6 +31,7 @@ class CDBData:
         :return: data from whois it will return rich table as output, None in case of no data
         :rtype: Table
         """
+
         if data_key in whois:
             basic_info = whois[data_key]
             data_title = str(data_key).replace("_", " ").title()
@@ -59,6 +59,7 @@ class CDBData:
         :return: A rich table will be returned for output
         :rtype: Table
         """
+
         r_table = Table(
             title=f"{record_type} Record",
             expand=True
@@ -83,6 +84,7 @@ class CDBData:
         :return: A rich table will be returned for output
         :rtype: Table
         """
+
         r_table = Table(
             title=f"{record_type} Record",
             expand=True
@@ -114,6 +116,7 @@ class CDBData:
         :return: A rich table will be returned for output
         :rtype: Table
         """
+
         r_table = Table(
             title=f"{record_type} Record",
             expand=True
@@ -133,6 +136,7 @@ class CDBData:
         :return: a list of tables will be returned
         :rtype: list
         """
+
         name_server_panel = []
         for rtype in whois["name_server"]:
 
@@ -163,6 +167,7 @@ class CDBData:
         :return:a table is returned for printing results.
         :rtype: Table
         """
+
         if "other_tld" in whois:
             other_tld = whois["other_tld"]
             table_data = Table(
@@ -207,6 +212,7 @@ class CDBData:
         :return:a table is returned for printing results.
         :rtype: Table
         """
+
         if "whois_data" in whois:
             basic_info = whois["whois_data"]
             table_data = Table(
@@ -229,6 +235,7 @@ class CDBData:
         :return:a table is returned for printing results.
         :rtype: Table
         """
+
         if "historic_data" in whois:
             historic_data = whois["historic_data"]
             info_table = Table(
@@ -253,6 +260,7 @@ class CDBData:
         :param whois: a dictionary which contains whois data
         :type whois: dict
         """
+
         console = self._console
         console_panel = []
 

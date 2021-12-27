@@ -42,12 +42,14 @@ o888ooooood8 8""888P'  888bod8P' o888o `Y8bod8P' o888o o888o `Y888""8o `8oooooo.
         :param console: terminal console
         :type console: Console
         """
+
         self._console = console
 
     def banner(self):
         """
         This function prints a banner on terminal screen.
         """
+
         constants = Constants()
         banner_text = secrets.choice(self._banner_list)
         project_title = f"\n\nEspionage v {constants.version} - Domain reconnaissance tool\n"

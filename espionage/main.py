@@ -12,6 +12,7 @@ def main():
     :return: None
     :rtype: None
     """
+
     console = Console()
     c_main = espionage.console.cMain(console=console)
     c_main.banner()

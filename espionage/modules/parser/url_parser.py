@@ -13,6 +13,7 @@ class UrlParser:
         :param domain: user provided domain address
         :type domain: str
         """
+
         if ":" in domain:
             content = str(domain).split(":")
             if len(content) > 1:
@@ -30,6 +31,7 @@ class UrlParser:
         :return: domain without http e.g. www.google.com
         :rtype: str
         """
+
         domain = str(domain).lower()
         if domain.startswith('http:\\\\'):
             domain = domain.replace('http:\\\\', '')
@@ -47,6 +49,7 @@ class UrlParser:
         :return: return domain without www e.g. google.com
         :rtype: str
         """
+
         domain = str(domain).lower()
         if domain.startswith("www."):
             domain = domain.replace('www.', '')
@@ -76,6 +79,7 @@ class UrlParser:
         :return: simplified  domain e.g. example.com
         :rtype: str
         """
+
         domain = self.domain
         domain = self.__remove_http__(domain)
         domain = self.__remove_www__(domain)
@@ -89,6 +93,7 @@ class UrlParser:
         :return: root of domain e.g. www.example.com
         :rtype: str
         """
+
         domain = self.domain
         domain = self.__remove_http__(domain)
         domain = self.__extract_root__(domain)

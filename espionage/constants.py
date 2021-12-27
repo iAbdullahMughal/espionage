@@ -1,7 +1,5 @@
 class Constants:
-    """
-    This class holds all constants of the project.
-    """
+    """Storing all constants of the project."""
     _author = "muhammad abdullah"
     _email = "iamabdullahmughal@gmail.com"
     _version = "0.0.4"

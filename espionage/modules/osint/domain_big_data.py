@@ -9,7 +9,7 @@ from espionage.console.c_dbdata import CDBData
 
 class DomainBigData:
     """
-    This class provides function which downloads whois records from domainbigdata and then parses
+    Class  provides function which downloads whois records from domainbigdata and then parses
     this downloaded html content and extracts useful information from content, following is
     example of domain cnn.cn
     """
@@ -19,6 +19,7 @@ class DomainBigData:
         """
         Data initialization for domain big data request
         """
+
         str_cookie = "cookie"
         self.__cookies = {
             f'{str_cookie}consent_dismissed': 'yes',
@@ -55,6 +56,7 @@ class DomainBigData:
         :return: a dictionary type record is returned
         :rtype: dict
         """
+
         if not div_data.find('table'):
             return {}
 
@@ -86,6 +88,7 @@ class DomainBigData:
         :return: dictionary is returned
         :rtype: dict
         """
+
         website_info = {}
         website_cards = html_soup.find(id="idCardWebsite")
         website_info = self.__extract_table_data__(website_cards, website_info)
@@ -101,6 +104,7 @@ class DomainBigData:
         :return: A list is returned with data added in it
         :rtype: list
         """
+
         extracted_tld = []
         tld_cards = html_soup.find(id="MainMaster_divOtherTLD")
         links = tld_cards.findChildren("a")
@@ -116,6 +120,7 @@ class DomainBigData:
         :return: A list is returned with data added in it
         :rtype: list
         """
+
         card_registrant = {}
         _card_registrant = html_soup.find(id="idCardRegistrant")
         card_registrant = self.__extract_table_data__(_card_registrant, card_registrant)
@@ -130,6 +135,7 @@ class DomainBigData:
         :return: a list of raw text split based on new line
         :rtype: list
         """
+
         raw_text = whois.find(attrs={"class": "col-md-12 pd5 mt10"}, )
         raw_text = raw_text.decode_contents().rstrip()
         raw_text = "\n".join(line.strip() for line in raw_text.split("<br/>"))
@@ -144,6 +150,7 @@ class DomainBigData:
         :return:  a list of raw text split based on new line
         :rtype: list
         """
+
         raw_text = []
         whois = html_soup.find(id="MainMaster_divWhois")
         if whois:
@@ -162,6 +169,7 @@ class DomainBigData:
         :return: name servers records in dictionary
         :rtype: dict
         """
+
         name_server = {}
         name_servers = html_soup.find(id="ns")
         tables = name_servers.findChildren('table')
@@ -193,6 +201,7 @@ class DomainBigData:
         :return: previous whois history
         :rtype: list
         """
+
         history = []
         _domain_histories = html_soup.find_all(id="divRptHistoryMain")
         for _history in _domain_histories:
@@ -217,6 +226,7 @@ class DomainBigData:
         :return: dictionary is returned with whois data information
         :rtype: dict | None
         """
+
         domain_details = {}
         soup = BeautifulSoup(html_content, 'html.parser')
 
@@ -255,6 +265,7 @@ class DomainBigData:
         :return: a dictionary is crafted with whois data
         :rtype: dict | None
         """
+
         domain_bigdata = {}
         self.extended_report = extended_report
         if not user_domain:

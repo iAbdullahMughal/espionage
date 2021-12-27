@@ -4,16 +4,15 @@ from espionage.constants import Constants
 
 class Input:
 
-    """
-    This class addresses user input, we get input from user using this class and parse those
-    arguments.
-    """
+    """Class addresses user input, we get input from user using this class and parse arguments."""
+
     _args = None
 
     def __init__(self):
         """
         Init function for preparing arguments for espionage usage.
         """
+
         constants = Constants()
         parser = argparse.ArgumentParser(
             description="Espionage " + constants.version)
@@ -42,6 +41,7 @@ class Input:
         :return: user entered domain name
         :rtype: str
         """
+
         return self._domain
 
     @property
@@ -51,4 +51,5 @@ class Input:
         :return: boolean data is returned
         :rtype: bool
         """
+
         return self._extended

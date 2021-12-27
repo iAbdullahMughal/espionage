@@ -8,7 +8,7 @@ from espionage.console import cAvailable
 class DomainAvailable:
 
     """
-    This class contains code related to domain availability test. It will check if a domain
+    Class contains code related to domain availability test. It will check if a domain
     is available for registration or not.
     """
     __ENDPOINT__ = "https://madchecker.com/api/domain/get-information"
@@ -19,6 +19,7 @@ class DomainAvailable:
         :param _domain: user entered domain name
         :type _domain: str
         """
+
         self._domain = _domain
 
     def domain_available(self) -> bool:
@@ -27,6 +28,7 @@ class DomainAvailable:
         :return: boolean type content is returned
         :rtype: bool
         """
+
         check_domain = UrlParser(self._domain).for_md()
         params = {
             "domain": check_domain
