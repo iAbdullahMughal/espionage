@@ -1,18 +1,27 @@
 import requests
 
-from espionage.modules.parser.url_parser import UrlParser
 from bs4 import BeautifulSoup
 
+from espionage.modules.parser.url_parser import UrlParser
 from espionage.console.input import Input
 from espionage.console.c_dbdata import CDBData
 
 
 class DomainBigData:
-    __EXTENDED_REPORT__ = True
+    """
+    This class provides function which downloads whois records from domainbigdata and then parses
+    this downloaded html content and extracts useful information from content, following is
+    example of domain cnn.cn
+    """
+    __extended_report__ = True
 
     def __init__(self):
+        """
+        Data initialization for domain big data request
+        """
+        str_cookie = "cookie"
         self.__cookies = {
-            'cookieconsent_dismissed': 'yes',
+            f'{str_cookie}consent_dismissed': 'yes',
         }
         self.__headers = {
             'Connection': 'keep-alive',
@@ -22,42 +31,61 @@ class DomainBigData:
             'sec-ch-ua-platform': '"Windows"',
             'DNT': '1',
             'Upgrade-Insecure-Requests': '1',
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) '
+                          'AppleWebKit/537.36 (KHTML, like Gecko) '
                           'Chrome/96.0.4664.110 Safari/537.36',
-            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;'
+            'Accept': 'text/html,application/xhtml+xml,application/xml;'
+                      'q=0.9,image/avif,image/webp,image/apng,*/*;'
                       'q=0.8,application/signed-exchange;v=b3;q=0.9',
             'Sec-Fetch-Site': 'same-origin',
             'Sec-Fetch-Mode': 'navigate',
             'Sec-Fetch-User': '?1',
-            'Sec-Fetch-Dest': 'document',
             'Referer': 'https://domainbigdata.com/',
             'Accept-Language': 'en-US,en;q=0.9',
         }
 
     @staticmethod
     def __extract_table_data__(div_data, record_info):
-        try:
-            tables = div_data.findChildren('table')
-            if tables:
-                table_card = tables[0]
-                rows = table_card.findChildren(['th', 'tr'])
-                for row in rows:
+        """
+        This function extracts table data from given html div into list and dictionary
+        :param div_data: html div data extracted from html content
+        :type div_data: soup
+        :param record_info: dictionary for record
+        :type record_info: dict
+        :return: a dictionary type record is returned
+        :rtype: dict
+        """
+        if not div_data.find('table'):
+            return {}
 
-                    cells = row.findChildren('td')
-                    _web_record = []
-                    for cell in cells:
-                        if cell.text:
-                            value = cell.text.rstrip().strip()
-                            if value and "Check abuses from" not in value:
-                                _web_record.append(value)
-                    if len(_web_record) > 1:
-                        _extracted_value = _web_record[1]
-                        record_info[_web_record[0]] = _extracted_value
-        except AttributeError:
-            pass
+        tables = div_data.findChildren('table')
+        if not tables or len(tables) < 1:
+            return {}
+
+        table_card = tables[0]
+        rows = table_card.findChildren(['th', 'tr'])
+        for row in rows:
+            cells = row.findChildren('td')
+            _web_record = []
+            for cell in cells:
+                if cell.text:
+                    value = cell.text.rstrip().strip()
+                    if value and "Check abuses from" not in value:
+                        _web_record.append(value)
+            if len(_web_record) > 1:
+                _extracted_value = _web_record[1]
+                record_info[_web_record[0]] = _extracted_value
+
         return record_info
 
     def __website_info__(self, html_soup):
+        """
+        This function extracts website basic whois information from given div based on class
+        :param html_soup: html content
+        :type html_soup: soup
+        :return: dictionary is returned
+        :rtype: dict
+        """
         website_info = {}
         website_cards = html_soup.find(id="idCardWebsite")
         website_info = self.__extract_table_data__(website_cards, website_info)
@@ -65,7 +93,14 @@ class DomainBigData:
         return website_info
 
     @staticmethod
-    def __extract_tld__(html_soup):
+    def __extract_tld__(html_soup) -> list:
+        """
+        This function extracts links from whois data. These links are tld of searched domain.
+        :param html_soup: html soup object from bs4 library
+        :type html_soup: soup
+        :return: A list is returned with data added in it
+        :rtype: list
+        """
         extracted_tld = []
         tld_cards = html_soup.find(id="MainMaster_divOtherTLD")
         links = tld_cards.findChildren("a")
@@ -74,6 +109,13 @@ class DomainBigData:
         return extracted_tld
 
     def __extract_registrant__(self, html_soup):
+        """
+        Extract registrant information from whois dataset
+        :param html_soup: html soup object from bs4 library
+        :type html_soup: soup
+        :return: A list is returned with data added in it
+        :rtype: list
+        """
         card_registrant = {}
         _card_registrant = html_soup.find(id="idCardRegistrant")
         card_registrant = self.__extract_table_data__(_card_registrant, card_registrant)
@@ -81,18 +123,28 @@ class DomainBigData:
 
     @staticmethod
     def __whois_data__(whois):
-        raw_text = None
-        try:
-            raw_text = whois.find(attrs={"class": "col-md-12 pd5 mt10"}, )
-            raw_text = raw_text.decode_contents().rstrip()
-            raw_text = "\n".join(line.strip() for line in raw_text.split("<br/>"))
-            raw_text = raw_text.split("\n")
-        except AttributeError:
-            pass
+        """
+        This function extracts raw whois data from whois html content.
+        :param whois: html soup object
+        :type whois: soup
+        :return: a list of raw text split based on new line
+        :rtype: list
+        """
+        raw_text = whois.find(attrs={"class": "col-md-12 pd5 mt10"}, )
+        raw_text = raw_text.decode_contents().rstrip()
+        raw_text = "\n".join(line.strip() for line in raw_text.split("<br/>"))
+        raw_text = raw_text.split("\n")
         return raw_text
 
     def __extract_raw_text__(self, html_soup):
-        raw_text = {}
+        """
+         This function extracts raw whois data from whois html content.
+        :param html_soup:  html soup object
+        :type html_soup: soup
+        :return:  a list of raw text split based on new line
+        :rtype: list
+        """
+        raw_text = []
         whois = html_soup.find(id="MainMaster_divWhois")
         if whois:
             data = self.__whois_data__(whois)
@@ -102,13 +154,21 @@ class DomainBigData:
 
     @staticmethod
     def __extract_name_server__(html_soup):
+        """
+        This function loops through html soup object and extracts nameservers. These nameservers
+        are appended into list and then added into dictionary.
+        :param html_soup: html input
+        :type html_soup: soup
+        :return: name servers records in dictionary
+        :rtype: dict
+        """
         name_server = {}
-        ns = html_soup.find(id="ns")
-        tables = ns.findChildren('table')
+        name_servers = html_soup.find(id="ns")
+        tables = name_servers.findChildren('table')
         for table_card in tables:
             title = ""
             rows = table_card.findChildren(['th', 'tr'])
-            ns = []
+            name_servers = []
             for row in rows:
                 cells = row.findChildren('td')
                 _web_record = []
@@ -117,15 +177,22 @@ class DomainBigData:
                         value = cell.string.rstrip().strip()
                         if value:
                             _web_record.append(value)
-                if _web_record and _web_record not in ns:
+                if _web_record and _web_record not in name_servers:
                     title = _web_record[0]
-                    ns.append(_web_record)
+                    name_servers.append(_web_record)
             if "-" in title:
                 title = "History"
-            name_server[title] = ns
+            name_server[title] = name_servers
         return name_server
 
     def __extract_history__(self, html_soup):
+        """
+        This function loops through html soup and extract history from whois record.
+        :param html_soup: html soup object as  input
+        :type html_soup: soup
+        :return: previosu whois history
+        :rtype: list
+        """
         history = []
         _domain_histories = html_soup.find_all(id="divRptHistoryMain")
         for _history in _domain_histories:
@@ -137,24 +204,27 @@ class DomainBigData:
                 history_record["recorded_date"] = recorded_at
                 card_registrant = self.__extract_table_data__(_history, card_registrant)
                 history_record["registrant"] = card_registrant
-                try:
-                    history_record["whois_data"] = self.__whois_data__(_history)
-                except:
-                    pass
+                history_record["whois_data"] = self.__whois_data__(_history)
 
             history.append(history_record)
         return history
 
     def __extract_results__(self, html_content):
+        """
+        This function call different submodules used to extract data from html content.
+        :param html_content: html content downloaded from website or read from file
+        :type html_content: str | bytes
+        :return: dictionary is returned with whois data information
+        :rtype: dict | None
+        """
         domain_details = {}
-
         soup = BeautifulSoup(html_content, 'html.parser')
 
         basic_info = self.__website_info__(soup)
 
         if basic_info:
             domain_details["basic_info"] = basic_info
-        if self.__EXTENDED_REPORT__:
+        if self.__extended_report__:
             more_tld = self.__extract_tld__(soup)
             if more_tld:
                 domain_details["other_tld"] = more_tld
@@ -173,14 +243,25 @@ class DomainBigData:
 
         return domain_details
 
-    def record_by_domain_address(self, domain, extended_report=False):
+    def with_domain_name(self, user_domain, extended_report=False):
+        """
+        Function which recives domain name as input and search it's record on domain big data
+        website. Later we parse this data with bs4 library. All data is convereted into lists
+        and dictionaries.
+        :param user_domain: input from user
+        :type user_domain: str
+        :param extended_report: User want extended output like tlds, whois histories,
+        :type extended_report: bool
+        :return: a dictionary is crafted with whois data
+        :rtype: dict | None
+        """
         domain_bigdata = {}
-        self.__EXTENDED_REPORT__ = extended_report
-        if not domain:
-            raise "Domain address was not provided."
-        url_parser = UrlParser(domain)
-        domain = url_parser.for_dbd()
-        with requests.get('https://domainbigdata.com/{}'.format(domain), headers=self.__headers,
+        self.__extended_report__ = extended_report
+        if not user_domain:
+            return domain_bigdata
+        url_parser = UrlParser(user_domain)
+        user_domain = url_parser.for_dbd()
+        with requests.get(f'https://domainbigdata.com/{user_domain}', headers=self.__headers,
                           cookies=self.__cookies) as response:
             result_status = response.status_code
             if result_status == 200:
@@ -192,9 +273,10 @@ class DomainBigData:
 if __name__ == '__main__':
     _input = Input()
     domain = _input.domain
+    extended = _input.extended
     _domain_big_data = DomainBigData()
     if isinstance(domain, str):
-        result = _domain_big_data.record_by_domain_address(domain=domain)
+        result = _domain_big_data.with_domain_name(domain, extended)
 
         if result:
             c_data = CDBData()
@@ -202,7 +284,7 @@ if __name__ == '__main__':
 
     elif isinstance(domain, list):
         for _domain in domain:
-            result = _domain_big_data.record_by_domain_address(domain=_domain)
+            result = _domain_big_data.with_domain_name(_domain, extended)
             if result:
                 c_data = CDBData()
                 c_data.print(whois=result)

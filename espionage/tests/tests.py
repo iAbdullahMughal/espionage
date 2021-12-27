@@ -34,7 +34,7 @@ class TestDomainBigData(unittest.TestCase):
                                                    'IN']]}}
         record_keys = len(stored_record)  # There are two keys basic_info and name_server
 
-        self.assertEqual(len(domain_available.record_by_domain_address(domain=domain)), record_keys)
+        self.assertEqual(len(domain_available.with_domain_name(user_domain=domain)), record_keys)
 
 
 if __name__ == '__main__':

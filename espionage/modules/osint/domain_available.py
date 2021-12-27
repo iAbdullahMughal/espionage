@@ -1,17 +1,31 @@
-import json
+import requests
+
 from espionage.console.input import Input
 from espionage.modules.parser.url_parser import UrlParser
 from espionage.console import cAvailable
-import requests
 
 
 class DomainAvailable:
+    """
+    This class contains code related to domain availability test. It will check if a domain
+    is available for registration or not.
+    """
     __ENDPOINT__ = "https://madchecker.com/api/domain/get-information"
 
-    def __init__(self, _domain):
+    def __init__(self, _domain: str):
+        """
+        Initialize function of domain available module
+        :param _domain: user entered domain name
+        :type _domain: str
+        """
         self._domain = _domain
 
     def domain_available(self) -> bool:
+        """
+        This function will send a request to internet and check if a domain is available or not.
+        :return: boolean type content is returned
+        :rtype: bool
+        """
         check_domain = UrlParser(self._domain).for_md()
         params = {
             "domain": check_domain
@@ -28,13 +42,13 @@ class DomainAvailable:
         )
         if response.status_code == 200:
             content = response.json()
-            if "domain" in content:
-                if content["domain"]["available"]:
-                    return True
-                else:
-                    return False
-            else:
+            if "domain" not in content:
                 return False
+            domain_check = content["domain"]
+            if "available" not in domain_check:
+                return False
+            is_available = domain_check["available"]
+            return is_available
         return False
 
 
