@@ -1,4 +1,5 @@
 class UrlParser:
+
     """
     Class addresses cosmetic settings for an url. Different online services requires
     different shape of url so this class generally contains different function which

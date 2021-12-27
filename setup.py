@@ -2,7 +2,8 @@ import setuptools
 
 with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
-version = "0.0.4"
+
+VERSION = "0.0.4"
 
 packages = [
     "espionage",
@@ -24,19 +25,20 @@ entry_points = {
 
 
 def read_requirements():
-    with open("requirements.txt") as f:
-        return f.read().splitlines()
+    with open("requirements.txt", 'r') as file_handle:
+        return file_handle.read().splitlines()
 
 
 requirements = read_requirements()
 
 setuptools.setup(
     name="espionage",
-    version=version,
+    version=VERSION,
     author="Muhammad Abdullah",
     author_email="iamabdullahmughal@gmail.com",
-    description="Espionage is open source intelligence gathering tool. This tool collect information "
-                "related to domain. ",
+    description="A basic python based tool for domain ℹ️ information gathering. I am working 💻 on"
+                " collecting information related to domain whois, history, dns records, web"
+                " technologies and records from web. Feel free to drop a suggestion 💡",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/iAbdullahMughal/espionage",

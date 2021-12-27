@@ -8,12 +8,13 @@ from espionage.console.c_dbdata import CDBData
 
 
 class DomainBigData:
+
     """
     This class provides function which downloads whois records from domainbigdata and then parses
     this downloaded html content and extracts useful information from content, following is
     example of domain cnn.cn
     """
-    __extended_report__ = True
+    __EXTENDED__ = True
 
     def __init__(self):
         """
@@ -190,7 +191,7 @@ class DomainBigData:
         This function loops through html soup and extract history from whois record.
         :param html_soup: html soup object as  input
         :type html_soup: soup
-        :return: previosu whois history
+        :return: previous whois history
         :rtype: list
         """
         history = []
@@ -224,7 +225,7 @@ class DomainBigData:
 
         if basic_info:
             domain_details["basic_info"] = basic_info
-        if self.__extended_report__:
+        if self.__EXTENDED__:
             more_tld = self.__extract_tld__(soup)
             if more_tld:
                 domain_details["other_tld"] = more_tld
@@ -245,8 +246,8 @@ class DomainBigData:
 
     def with_domain_name(self, user_domain, extended_report=False):
         """
-        Function which recives domain name as input and search it's record on domain big data
-        website. Later we parse this data with bs4 library. All data is convereted into lists
+        Function which receives domain name as input and search it's record on domain big data
+        website. Later we parse this data with bs4 library. All data is converted into lists
         and dictionaries.
         :param user_domain: input from user
         :type user_domain: str
@@ -256,7 +257,7 @@ class DomainBigData:
         :rtype: dict | None
         """
         domain_bigdata = {}
-        self.__extended_report__ = extended_report
+        self.__EXTENDED__ = extended_report
         if not user_domain:
             return domain_bigdata
         url_parser = UrlParser(user_domain)

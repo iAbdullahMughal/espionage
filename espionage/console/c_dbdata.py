@@ -49,7 +49,83 @@ class CDBData:
         return None
 
     @staticmethod
-    def __extract_name_servers__(whois: dict) -> list:
+    def __extract_a_record__(record_type, records):
+        """
+        This function will extract A/AAAA records from whois dataset
+        :param record_type: Record type of DNS
+        :type record_type:str
+        :param records: a list of records
+        :type records: list
+        :return: A rich table will be returned for output
+        :rtype: Table
+        """
+        r_table = Table(
+            title=f"{record_type} Record",
+            expand=True
+        )
+        r_table.add_column("Type")
+        r_table.add_column("Hostname", style="cyan")
+        r_table.add_column("Address", style="blue")
+        r_table.add_column("TTL", )
+        r_table.add_column("Class", )
+        for _type, _hostname, _address, _ttl, _class in records:
+            r_table.add_row(_type, _hostname, _address, _ttl, _class)
+        return r_table
+
+    @staticmethod
+    def __extract_mx_record__(record_type, records):
+        """
+        This function will extract MX records from whois dataset
+        :param record_type: Record type of DNS
+        :type record_type:str
+        :param records: a list of records
+        :type records: list
+        :return: A rich table will be returned for output
+        :rtype: Table
+        """
+        r_table = Table(
+            title=f"{record_type} Record",
+            expand=True
+        )
+        r_table.add_column("Type")
+        r_table.add_column("Hostname", style="cyan")
+
+        r_table.add_column("Preference", )
+        r_table.add_column("TTL", )
+        r_table.add_column("Class", )
+        if len(records[0]) == 6:
+            r_table.add_column("Address", style="cyan")
+            for _type, _hostname, _address, _preference, _ttl, _class in records:
+                r_table.add_row(_type, _hostname, _address, _preference, _ttl, _class)
+
+        if len(records[0]) == 5:
+            for _type, _hostname, _preference, _ttl, _class in records:
+                r_table.add_row(_type, _hostname, _preference, _ttl, _class)
+        return r_table
+
+    @staticmethod
+    def __extract_dns_history__(record_type, records):
+        """
+        This function will extract DNS History records from whois dataset
+        :param record_type: Record type of DNS
+        :type record_type:str
+        :param records: a list of records
+        :type records: list
+        :return: A rich table will be returned for output
+        :rtype: Table
+        """
+        r_table = Table(
+            title=f"{record_type} Record",
+            expand=True
+        )
+        r_table.add_column("Date")
+        r_table.add_column("Status", style="cyan")
+        r_table.add_column("Name Server", style="cyan")
+        for _date, _status, _nameserver in records[1:]:
+            r_table.add_row(_date, _status, _nameserver)
+        return r_table
+
+    def __extract_name_servers__(self, whois: dict) -> list:
         """
         This function will extract name server records from whois dictionary
         :param whois: a dictionary which contains whois data
@@ -59,47 +135,20 @@ class CDBData:
         """
         name_server_panel = []
         for rtype in whois["name_server"]:
-            r_table = Table(
-                title=f"{rtype} Record",
-                expand=True
-            )
+
             records = whois["name_server"][rtype]
             if "a" == rtype.lower() or "aaaa" == rtype.lower():
-                r_table.add_column("Type")
-                r_table.add_column("Hostname", style="cyan")
-                r_table.add_column("Address", style="blue")
-                r_table.add_column("TTL", )
-                r_table.add_column("Class", )
-                for _type, _hostname, _address, _ttl, _class in records:
-                    r_table.add_row(_type, _hostname, _address, _ttl, _class)
+                r_table = self.__extract_a_record__(rtype, records)
                 name_server_panel.append(
                     r_table
                 )
             elif "mx" == rtype.lower():
-                r_table.add_column("Type")
-                r_table.add_column("Hostname", style="cyan")
-
-                r_table.add_column("Preference", )
-                r_table.add_column("TTL", )
-                r_table.add_column("Class", )
-                if len(records[0]) == 6:
-                    r_table.add_column("Address", style="cyan")
-                    for _type, _hostname, _address, _preference, _ttl, _class in records:
-                        r_table.add_row(_type, _hostname, _address, _preference, _ttl, _class)
-
-                if len(records[0]) == 5:
-                    for _type, _hostname, _preference, _ttl, _class in records:
-                        r_table.add_row(_type, _hostname, _preference, _ttl, _class)
-
+                r_table = self.__extract_mx_record__(rtype, records)
                 name_server_panel.append(
                     r_table
                 )
             elif "history" == rtype.lower():
-                r_table.add_column("Date")
-                r_table.add_column("Status", style="cyan")
-                r_table.add_column("Name Server", style="cyan")
-                for _date, _status, _nameserver in records[1:]:
-                    r_table.add_row(_date, _status, _nameserver)
+                r_table = self.__extract_dns_history__(rtype, records)
                 name_server_panel.append(
                     r_table
                 )

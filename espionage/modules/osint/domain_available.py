@@ -6,6 +6,7 @@ from espionage.console import cAvailable
 
 
 class DomainAvailable:
+
     """
     This class contains code related to domain availability test. It will check if a domain
     is available for registration or not.

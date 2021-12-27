@@ -4,6 +4,10 @@ from espionage.modules.osint.domain_big_data import DomainBigData
 
 
 class TestDomainAvailable(unittest.TestCase):
+    """
+    This is unit test case class for domain available
+    """
+
     def test_google_domain(self):
         domain = "www.google.com"
         domain_available = DomainAvailable(domain)
@@ -16,13 +20,18 @@ class TestDomainAvailable(unittest.TestCase):
 
 
 class TestDomainBigData(unittest.TestCase):
+    """
+    This class contains test case for domain big data website.
+    """
+
     def test_google_domain(self):
         domain = "www.google.com"
         domain_available = DomainBigData()
         stored_record = {'basic_info': {'Date creation': '1997-09-15',
                                         'Domain': 'google.com',
                                         'IP Address': '172.217.13.206',
-                                        'IP Geolocation': 'United States, California, Mountain View',
+                                        'IP Geolocation': 'United States, California, '
+                                                          'Mountain View',
                                         'Title': 'Google',
                                         'Web age': '24 years and 3 months',
                                         'Words in': 'go ogle'},

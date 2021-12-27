@@ -3,6 +3,7 @@ from rich.panel import Panel
 
 
 class CDAvailable:
+
     """
     We are using the class to print our data on console. This class get reference of console and
     prints content on that console. If reference is not passed then we create a new console, our

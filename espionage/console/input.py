@@ -3,6 +3,7 @@ from espionage.constants import Constants
 
 
 class Input:
+
     """
     This class addresses user input, we get input from user using this class and parse those
     arguments.
