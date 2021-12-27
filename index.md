@@ -1,37 +1,150 @@
-## Welcome to GitHub Pages
+<p align="center">
+<img src="https://lh3.googleusercontent.com/NfYrnpBuMyqZGwGqBZ9HR7j0NmuZWaEIOdWq-ZBxoylsWHhVaTXKD_8VJPhZk_-QFyUoJZFRxAYeYM5iphN2A0UeyqD_Hd8w-rpRhzlYQWv01o9GK9Q9mWnTPulNkedLjlZMdkz9" />
+</p>
 
-You can use the [editor on GitHub](https://github.com/iAbdullahMughal/espionage/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+---
+<center>
+<h3>𝙴𝚜𝚙𝚒𝚘𝚗𝚊𝚐𝚎 - 𝙳𝚘𝚖𝚊𝚒𝚗 𝚁𝚎𝚌𝚘𝚗𝚗𝚊𝚒𝚜𝚜𝚊𝚗𝚌𝚎 𝚃𝚘𝚘𝚕</h3>
+</center>
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+---
 
-### Markdown
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+# <p> <img width="25" height="25" src="https://cdn-icons-png.flaticon.com/512/1716/1716764.png">  Work in progress ... </p>
 
-```markdown
-Syntax highlighted code block
+## ⚙️Install espionage on system
 
-# Header 1
-## Header 2
-### Header 3
+### Cloning Repo
 
-- Bulleted
-- List
+- Download & install `python 3.6` or above
+- Download or clone the repo.
+- Create a virtual environment execute followings
 
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+```shell
+$ git clone https://github.com/iAbdullahMughal/espionage.git
+$ cd espionage
+$ pip install -r requirements.txt
+$ python setup.py build
+$ python setup.py install
 ```
 
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
+<p align="center">
+<img src="https://lh3.googleusercontent.com/q7y3lieNJ4wTPXHr2nzmsgW_Qj4beP4d1ECDxMreOBFLTcGcl5g6q1E6PEw8RhFTmIiuVYKdFTohfd5YNdb9I3HIU6WQ091Qe_bco3LzDZ2ruA6JEhdJdt0Uyrtu4ycu6frhAYck" />
+</p>
 
-### Jekyll Themes
+### Using Pip
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/iAbdullahMughal/espionage/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+- You can install `espionage` by using pip command.
 
-### Support or Contact
+```shell
+$ pip install espionage
+```
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+# 🔗 Modules Currently Supported
+
+- [x] 👁️‍🗨️ Domain Availability
+    - By using [Mad Checker](https://madchecker.com/)
+- [x] 📖 Whois
+    - By using [Domain Big Data](https://domainbigdata.com/)
+- [ ] 📜 Domain History Based on DNS
+    - By using [Hoster Stats](http://www.hosterstats.com)
+- [ ] 🎁 Dns Services ️
+    - By using [Dns-Lg](http://www.dns-lg.com)
+
+
+### Status 
+[![CircleCI](https://circleci.com/gh/iAbdullahMughal/espionage/tree/main.svg?style=svg)](https://circleci.com/gh/iAbdullahMughal/espionage/tree/main) [![Build Status](https://api.codiga.io/project/30529/status/svg)](https://app.codiga.io/public/project/30529/espionage/dashboard)   [![Codacy Badge](https://app.codacy.com/project/badge/Grade/4a00d6efafea4a50a9159c43dc349bfe)](https://www.codacy.com/gh/iAbdullahMughal/espionage/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=iAbdullahMughal/espionage&amp;utm_campaign=Badge_Grade)
+
+[//]: # ( [![Build Status]&#40;https://app.travis-ci.com/iAbdullahMughal/espionage.svg?branch=main&#41;]&#40;https://app.travis-ci.com/iAbdullahMughal/espionage&#41;)
+### 👁️‍🗨️ Domain Availability Check
+
+- This module check if a domain is available or taken already.
+
+*A domain name locates an organization or other entity on the Internet.*
+
+### 📖 Whois Check
+
+Current module support following in code
+
+#### *Domain Basic Information*
+
+```json
+ {
+  "basic_info": {
+    "Domain": "hacker.com",
+    "Words in": "hacker",
+    "Date creation": "2004-03-31",
+    "Web age": "17 years and 8 months"
+  }
+}
+```
+
+#### *Domain Registrant Info*
+
+```json
+ {
+  "registrant_info": {
+    "Name": "Pinnatech Inc. D.b.a. Nauticom",
+    "Organization": "Pinnatech Inc. D.b.a. Nauticom",
+    "Email": "domreg@nauticom.net",
+    "Address": "4008 Gibsonia Road",
+    "City": "Gibsonia",
+    "State": "PA",
+    "Country": "United States",
+    "Phone": "+1.7249339800",
+    "Fax": "+1.7249339888",
+    "Private": "no"
+  }
+}
+```
+
+#### *Name server records*
+
+```json
+ {
+  "name_server": {
+    "MX": [
+      [
+        "MX",
+        "hacker.com",
+        "filter.hacker.com",
+        "10",
+        "3600",
+        "IN"
+      ]
+    ]
+  }
+}
+```
+
+#### *History Records*
+
+```json
+{
+  "History": [
+    [
+      "Date",
+      "Status",
+      "Name Server"
+    ],
+    [
+      "2014-10-09",
+      "Transferred to",
+      "consolidated.net"
+    ]
+  ]
+}
+
+
+```
+
+<p align="center">
+<img src="https://lh5.googleusercontent.com/k4aYijBl_3uZByKt019ALda93wNcnLSPuKUt1I8I8A4wahMrAHtekyUzu8gvi3qSoB_4Y6e78El9JGOLy4aLdC23vm-dDuqRjhBfliEKMorA2kokG0ED5drQnC25HdHXkN825t1a" />
+</p>
+
+
+<pre> ⚠️This is an educational project. Don't abuse services.</pre>
+
+
+
+ 
