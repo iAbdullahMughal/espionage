@@ -9,40 +9,11 @@
 </p>
 
 ---
+<p align="center"><a href="https://replit.com/@iAbdullahMughal/espionage#.replit"><img src="https://img.shields.io/badge/Try_Online_At_Repl.it-Click Here-blue?style=for-the-badge&logo=repl.it" alt="Espionage on Repl.it" /></a></p>
 
-# <p> <img width="25" height="25" src="https://cdn-icons-png.flaticon.com/512/1716/1716764.png">  Work in progress ... </p>
-
-<table>
-    <tbody>
-    <tr>
-        <th>Pypi Package</th>
-        <th><a href="https://pypi.python.org/pypi/espionage/"> <img src="https://badge.fury.io/py/espionage.svg"/></a>
-        </th>
-    </tr>
-    <tr>
-        <th>License</th>
-        <th><a href="https://pypi.python.org/pypi/ansicolortags/"><img src="https://img.shields.io/pypi/l/ansicolortags.svg"/></a></th>
-    </tr>
-    <tr>
-        <th>Project Hit</th>
-        <th><img src="http://hits.dwyl.com/iAbdullahMughal/espionage.svg?style=flat-square"/></th>
-    </tr>
-    <tr>
-        <th>Code Quality - Codiga</th>
-        <th><a href="https://app.codiga.io/public/project/30529/espionage/dashboard"><img  src="https://api.codiga.io/project/30529/status/svg"/> </a>          
-        </th>
-    </tr>
-    <tr>
-        <th>Code Quality - Codacy</th>
-        <th><a href="https://www.codacy.com/gh/iAbdullahMughal/espionage/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=iAbdullahMughal/espionage&amp;utm_campaign=Badge_Grade"> <img src="https://app.codacy.com/project/badge/Grade/4a00d6efafea4a50a9159c43dc349bfe"/></a>          
-        </th>
-    </tr>
-    <tr>
-        <th>Test Cases</th>
-        <th><a href="https://app.circleci.com/pipelines/github/iAbdullahMughal/espionage"><img src="https://circleci.com/gh/iAbdullahMughal/espionage/tree/main.svg?style=svg"/></a></th>
-    </tr>    
-    </tbody>
-</table>
+<p align="center">
+<a href="https://pypi.python.org/pypi/espionage/"> <img src="https://badge.fury.io/py/espionage.svg"/></a> <a href="https://pypi.python.org/pypi/ansicolortags/"><img src="https://img.shields.io/pypi/l/ansicolortags.svg"/></a> <a href="https://app.codiga.io/public/project/30529/espionage/dashboard"><img  src="https://api.codiga.io/project/30529/status/svg"/> </a> <a href="https://www.codacy.com/gh/iAbdullahMughal/espionage/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=iAbdullahMughal/espionage&amp;utm_campaign=Badge_Grade"> <img src="https://app.codacy.com/project/badge/Grade/4a00d6efafea4a50a9159c43dc349bfe"/></a> <a href="https://app.circleci.com/pipelines/github/iAbdullahMughal/espionage"><img src="https://circleci.com/gh/iAbdullahMughal/espionage/tree/main.svg?style=svg"/></a> 
+</p>
 
 ## ⚙️Install espionage on system
 
@@ -71,13 +42,14 @@ $ pip install espionage
 # 🔗 Modules Currently Supported
 
 - [x] 👁️‍🗨️ Domain Availability
-    - By using [Mad Checker](https://madchecker.com/)
 - [x] 📖 Whois
-    - By using [Domain Big Data](https://domainbigdata.com/)
 - [x] 📜 Domain History Based on DNS
-    - By using [Hoster Stats](http://www.hosterstats.com)
-- [ ] 🎁 Dns Services ️
-    - By using [Dns-Lg](http://www.dns-lg.com)
+- [ ] 🎁 Dns Services ️ (In progress)
+
+[//]: # (    - By using [Mad Checker]&#40;https://madchecker.com/&#41;)
+[//]: # (    - By using [Domain Big Data]&#40;https://domainbigdata.com/&#41;)
+[//]: # (    - By using [Hoster Stats]&#40;http://www.hosterstats.com&#41;)
+[//]: # (    - By using [Dns-Lg]&#40;http://www.dns-lg.com&#41;)
 
 ### 👁️‍🗨️ Domain Availability Check
 
@@ -400,7 +372,7 @@ DNS Record History
 
 <pre> ⚠️This is an educational project. Don't abuse services.</pre>
 
-<p align="center"><a href="https://www.python.org/" title="Made with Python"><img src="https://img.shields.io/badge/Made%20with-Python-1f425f.svg" /></a></p>
+<p align="center"><a href="https://www.python.org/" title="Made with Python"><img src="https://img.shields.io/badge/Made%20with-Python-1f425f.svg" /></a> <img src="http://hits.dwyl.com/iAbdullahMughal/espionage.svg?style=flat-square"/></p>
 
 
 
