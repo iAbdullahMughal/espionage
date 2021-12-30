@@ -68,9 +68,15 @@ class DnsHistory:
         params = (
             ('domain', f'{self._domain}'),
         )
-        response = requests.get('http://www.hosterstats.com/historicaldns.php', headers=headers,
-                                params=params,
-                                cookies=cookies, )
+        try:
+            response = requests.get('http://www.hosterstats.com/historicaldns.php', headers=headers,
+                                    params=params,
+                                    cookies=cookies, timeout=8)
+        except requests.exceptions.ConnectionError:
+            return None
+        except requests.exceptions.Timeout:
+            return None
+
         if response.status_code == 200:
             html_report = response.content.decode("utf-8")
             return html_report
