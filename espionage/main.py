@@ -60,7 +60,8 @@ class Main:
         c_dns_historical = DnsHistory(domain)
         report["domain_history"] = c_dns_historical.historical_data()
         self._done = True
-        return json.dumps(report, indent=2)
+        time.sleep(.5)
+        return report
 
     @staticmethod
     def print_report(report, console, domain=""):
@@ -105,7 +106,7 @@ def main():
         c_report = Main()
         report = c_report.json_record(domain=domain, extended=extended)
         if is_json:
-            console.print(report)
+            console.print(json.dumps(report, indent=2))
         else:
             c_report.print_report(report, console, domain)
 
@@ -114,7 +115,7 @@ def main():
             c_report = Main()
             report = c_report.json_record(domain=_domain, extended=extended)
             if is_json:
-                console.print(report)
+                console.print(json.dumps(report, indent=2))
             else:
                 c_report.print_report(report, console, _domain)
 

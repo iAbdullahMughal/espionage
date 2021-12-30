@@ -1,6 +1,7 @@
+import secrets
 import time
 import uuid
-import random
+
 import requests
 from bs4 import BeautifulSoup
 
@@ -42,7 +43,7 @@ class DnsHistory:
         device_e = user_b + 500005280971
         session_uuid = str(uuid.uuid4())
 
-        user_g = random.uniform(2000000, 9000000)
+        user_g = secrets.randbelow(2000000)
         cookies = {
             f'ab.storage.userId.{user_uuid}': f'%7B%22g%22%3A%22{user_g}%22%2C%22c%22%3A{user_b}'
                                               f'%2C%22l%22%3A{user_l}%7D',
