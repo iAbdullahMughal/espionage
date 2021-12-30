@@ -3,7 +3,6 @@ from espionage.constants import Constants
 
 
 class Input:
-
     """Class addresses user input, we get input from user using this class and parse arguments."""
 
     _args = None
@@ -18,8 +17,14 @@ class Input:
             description="Espionage " + constants.version)
         parser.add_argument("-d", dest="domain", required=True,
                             help="Domain address for recon operation.")
-        parser.add_argument("-e", dest="extended", required=False, type=bool,
+        parser.add_argument('-e', '--extended', dest='extended', action='store_true',
                             help="Get extended report against domain.")
+        parser.add_argument('-j', '--json', dest='json', action='store_true',
+                            help="Add -j --json to create a json report.")
+
+        parser.set_defaults(extended=False)
+        parser.set_defaults(json=False)
+
         args = parser.parse_args()
         if args.domain:
             if isinstance(args.domain, str):
@@ -33,6 +38,11 @@ class Input:
             self._extended = True
         else:
             self._extended = False
+
+        if args.json:
+            self.json = True
+        else:
+            self.json = False
 
     @property
     def domain(self) -> str:

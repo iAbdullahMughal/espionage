@@ -57,6 +57,7 @@ o888ooooood8 8""888P'  888bod8P' o888o `Y8bod8P' o888o o888o `Y888""8o `8oooooo.
         # author_email = "\033[4m{}\033[0m".format(Constants.email)
 
         text = Text()
+        text.append("\n")
         text.append(banner_text)
         text.append(project_title)
         # text.append(project_author, style="bold magenta")

@@ -56,7 +56,8 @@ class DomainBigData:
         :return: a dictionary type record is returned
         :rtype: dict
         """
-
+        if not div_data:
+            return {}
         if not div_data.find('table'):
             return {}
 
@@ -107,6 +108,8 @@ class DomainBigData:
 
         extracted_tld = []
         tld_cards = html_soup.find(id="MainMaster_divOtherTLD")
+        if not tld_cards:
+            return extracted_tld
         links = tld_cards.findChildren("a")
         for link in links:
             extracted_tld.append(link.string)
@@ -123,6 +126,8 @@ class DomainBigData:
 
         card_registrant = {}
         _card_registrant = html_soup.find(id="idCardRegistrant")
+        if not _card_registrant:
+            return card_registrant
         card_registrant = self.__extract_table_data__(_card_registrant, card_registrant)
         return card_registrant
 
@@ -172,6 +177,8 @@ class DomainBigData:
 
         name_server = {}
         name_servers = html_soup.find(id="ns")
+        if not name_servers:
+            return name_server
         tables = name_servers.findChildren('table')
         for table_card in tables:
             title = ""
@@ -234,6 +241,10 @@ class DomainBigData:
 
         if basic_info:
             domain_details["basic_info"] = basic_info
+        registrant_info = self.__extract_registrant__(soup)
+        if registrant_info:
+            domain_details["registrant_info"] = registrant_info
+        name_server = self.__extract_name_server__(soup)
         if self.extended_report:
             more_tld = self.__extract_tld__(soup)
             if more_tld:
@@ -244,10 +255,6 @@ class DomainBigData:
             historic_data = self.__extract_history__(soup)
             if historic_data:
                 domain_details["historic_data"] = historic_data
-        registrant_info = self.__extract_registrant__(soup)
-        if registrant_info:
-            domain_details["registrant_info"] = registrant_info
-        name_server = self.__extract_name_server__(soup)
         if name_server:
             domain_details["name_server"] = name_server
 

@@ -17,7 +17,6 @@ class CDAvailable:
         :param console: rich console terminal
         :type console: Console
         """
-        
         if not console:
             console = Console()
 

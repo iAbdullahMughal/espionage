@@ -98,3 +98,11 @@ class UrlParser:
         domain = self.__remove_http__(domain)
         domain = self.__extract_root__(domain)
         return domain
+
+    def for_hs(self):
+        domain = self.domain
+        domain = self.__remove_http__(domain)
+        domain = self.__remove_www__(domain)
+        domain = self.__extract_root__(domain)
+
+        return domain
