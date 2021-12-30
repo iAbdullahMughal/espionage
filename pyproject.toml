@@ -4,3 +4,17 @@ requires = [
     "wheel",
 ]
 build-backend = "setuptools.build_meta"
+
+[tool.poetry]
+name = "espionage"
+version = "0.0.4"
+description = "A basic python based tool for domain ℹ️ information gathering. I am working 💻 on  collecting information related to domain whois, history, dns records, web technologies and records from web. Feel free to drop a suggestion 💡"
+authors = ["Muhammad Abdullah <iamabdullahmughal@gmail.com>"]
+
+
+[tool.poetry.dependencies]
+python = "^3.6"
+requests = "2.26.0"
+beautifulsoup4 = "4.10.0"
+lxml = "4.7.1"
+rich = "10.16.1"

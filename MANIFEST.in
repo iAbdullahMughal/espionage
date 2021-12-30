@@ -1,0 +1,9 @@
+global-exclude *_test.py
+exclude .travis.yml
+exclude appveyor.yml
+exclude .circleci
+exclude .circleci/config.yml
+exclude .github
+exclude .github/workflows
+exclude .github/workflows/codacy-analysis.yml
+exclude .github/workflows/codeql-analysis.yml
