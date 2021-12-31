@@ -15,7 +15,7 @@ class Input:
         constants = Constants()
         parser = argparse.ArgumentParser(
             description="Espionage " + constants.version)
-        parser.add_argument("-d", dest="domain", required=True,
+        parser.add_argument("-d", dest="domain", required=True, nargs='+',
                             help="Domain address for recon operation.")
         parser.add_argument('-e', '--extended', dest='extended', action='store_true',
                             help="Get extended report against domain.")

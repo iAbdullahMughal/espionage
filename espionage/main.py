@@ -3,12 +3,10 @@ import json
 import sys
 import threading
 import time
-
-import espionage.console
+from rich.console import Console
 
 from espionage.console.input import Input
-from rich.console import Console
-from espionage.console import cAvailable, cDomainWhois, cDomainHistory
+from espionage.console import cAvailable, cDomainWhois, cDomainHistory, cMain
 from espionage.modules.osint import DomainAvailable, DnsHistory, DomainBigData
 
 
@@ -100,7 +98,7 @@ def main():
     extended = _input.extended
     is_json = _input.json
     console = Console()
-    c_main = espionage.console.cMain(console=console)
+    c_main = cMain(console=console)
     c_main.banner()
     if isinstance(domain, str):
         c_report = Main()

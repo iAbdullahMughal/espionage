@@ -29,7 +29,8 @@ def read_requirements():
         with open("requirements.txt", 'r', encoding='UTF-8') as file_handle:
             return file_handle.read().splitlines()
     except FileNotFoundError:
-        return ["requests~=2.26.0", "beautifulsoup4~=4.10.0", "lxml", "rich~=10.16.1", "setuptools~=57.0.0"]
+        return ["requests~=2.26.0", "beautifulsoup4~=4.10.0", "lxml", "rich~=10.16.1",
+                "setuptools~=57.0.0"]
 
 
 requirements = read_requirements()

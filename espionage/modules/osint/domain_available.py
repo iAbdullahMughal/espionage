@@ -56,17 +56,17 @@ class DomainAvailable:
 
 
 if __name__ == '__main__':
-    _input = Input()
-    domain = _input.domain
-    if isinstance(domain, str):
-        d_available = DomainAvailable(domain)
-        result = d_available.domain_available()
-        c_available = cAvailable()
-        c_available.print(is_available=result, domain=domain)
+    INPUT = Input()
+    DOMAIN = INPUT.domain
+    if isinstance(DOMAIN, str):
+        IS_AVAILABLE = DomainAvailable(DOMAIN)
+        RESULT = IS_AVAILABLE.domain_available()
+        CONSOLE = cAvailable()
+        CONSOLE.print(is_available=RESULT, domain=DOMAIN)
 
-    elif isinstance(domain, list):
-        for _domain in domain:
-            d_available = DomainAvailable(_domain)
-            result = d_available.domain_available()
-            c_available = cAvailable()
-            c_available.print(is_available=result, domain=_domain)
+    elif isinstance(DOMAIN, list):
+        for _domain in DOMAIN:
+            IS_AVAILABLE = DomainAvailable(_domain)
+            RESULT = IS_AVAILABLE.domain_available()
+            CONSOLE = cAvailable()
+            CONSOLE.print(is_available=RESULT, domain=_domain)

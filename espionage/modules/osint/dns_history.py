@@ -1,10 +1,9 @@
 import secrets
 import time
 import uuid
-
 import requests
-from bs4 import BeautifulSoup
 
+from bs4 import BeautifulSoup
 from espionage.modules.parser.url_parser import UrlParser
 from espionage.console.input import Input
 from espionage.console import cDomainHistory
@@ -149,18 +148,18 @@ class DnsHistory:
 
 
 if __name__ == '__main__':
-    _input = Input()
-    domain = _input.domain
-    domain_history = DnsHistory(domain)
-    if isinstance(domain, str):
-        result = domain_history.historical_data()
-        if result:
-            c_data = cDomainHistory()
-            c_data.print(domain_history.historical_data())
+    INPUT = Input()
+    DOMAIN = INPUT.domain
+    DOMAIN_HISTORY = DnsHistory(DOMAIN)
+    if isinstance(DOMAIN, str):
+        RESULTS = DOMAIN_HISTORY.historical_data()
+        if RESULTS:
+            CONSOLE = cDomainHistory()
+            CONSOLE.print(DOMAIN_HISTORY.historical_data())
 
-    elif isinstance(domain, list):
-        for _domain in domain:
-            result = domain_history.historical_data()
-            if result:
-                c_data = cDomainHistory()
-                c_data.print(domain_history.historical_data())
+    elif isinstance(DOMAIN, list):
+        for _domain in DOMAIN:
+            RESULTS = DOMAIN_HISTORY.historical_data()
+            if RESULTS:
+                CONSOLE = cDomainHistory()
+                CONSOLE.print(DOMAIN_HISTORY.historical_data())

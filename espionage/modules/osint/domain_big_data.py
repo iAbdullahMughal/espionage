@@ -289,19 +289,19 @@ class DomainBigData:
 
 
 if __name__ == '__main__':
-    _input = Input()
-    domain = _input.domain
-    _domain_big_data = DomainBigData()
-    if isinstance(domain, str):
-        result = _domain_big_data.with_domain_name(domain, _input.extended)
+    INPUT = Input()
+    DOMAIN = INPUT.domain
+    DOMAIN_BIG_DATA = DomainBigData()
+    if isinstance(DOMAIN, str):
+        RESULTS = DOMAIN_BIG_DATA.with_domain_name(DOMAIN, INPUT.extended)
 
-        if result:
-            c_data = CDBData()
-            c_data.print(whois=result)
+        if RESULTS:
+            CONSOLE = CDBData()
+            CONSOLE.print(whois=RESULTS)
 
-    elif isinstance(domain, list):
-        for _domain in domain:
-            result = _domain_big_data.with_domain_name(_domain, _input.extended)
-            if result:
-                c_data = CDBData()
-                c_data.print(whois=result)
+    elif isinstance(DOMAIN, list):
+        for _domain in DOMAIN:
+            RESULTS = DOMAIN_BIG_DATA.with_domain_name(_domain, INPUT.extended)
+            if RESULTS:
+                CONSOLE = CDBData()
+                CONSOLE.print(whois=RESULTS)
