@@ -15,6 +15,14 @@
 <a href="https://pypi.python.org/pypi/espionage/"> <img src="https://badge.fury.io/py/espionage.svg"/></a> <a href="https://pypi.python.org/pypi/ansicolortags/"><img src="https://img.shields.io/pypi/l/ansicolortags.svg"/></a> <a href="https://app.codiga.io/public/project/30529/espionage/dashboard"><img  src="https://api.codiga.io/project/30529/status/svg"/> </a> <a href="https://www.codacy.com/gh/iAbdullahMughal/espionage/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=iAbdullahMughal/espionage&amp;utm_campaign=Badge_Grade"> <img src="https://app.codacy.com/project/badge/Grade/4a00d6efafea4a50a9159c43dc349bfe"/></a> <a href="https://app.circleci.com/pipelines/github/iAbdullahMughal/espionage"><img src="https://circleci.com/gh/iAbdullahMughal/espionage/tree/main.svg?style=svg"/></a> 
 </p>
 
+
+## ⚠️Disclaimer
+```
+Using this repo can be against ToS, code is provided for educational purpose only. 
+Please read ToS and use this scripts only if you are authorize to.
+```
+
+
 ## ⚙️Install espionage on system
 
 ### Cloning Repo
@@ -80,8 +88,10 @@ python main.py -d "www.hacker.com" --json --extended
 <details>
   <summary><b style="color:skyblue">Click to view Json output</b></summary>
 
-#### *Output Json*
+&emsp;
 
+#### *Output Json*
+&emsp;
 ```json
 {
   "domain_address": "www.hacker.com",
@@ -176,9 +186,11 @@ python main.py -d "www.hacker.com" --extended
 
 <details>
   <summary><b style="color:skyblue">Click to view Tabler output</b></summary>
+&emsp;
 
 #### *Output Json*
-
+&emsp;
+&emsp;
 ```shell
 
 ███████╗███████╗██████╗ ██╗ ██████╗ ███╗   ██╗ █████╗  ██████╗ ███████╗
@@ -370,9 +382,7 @@ DNS Record History
 
 
 
-<pre> ⚠️This is an educational project. Don't abuse services.</pre>
-
-<p align="center"><a href="https://www.python.org/" title="Made with Python"><img src="https://img.shields.io/badge/Made%20with-Python-1f425f.svg" /></a> <img src="http://hits.dwyl.com/iAbdullahMughal/espionage.svg?style=flat-square"/></p>
+<p align="center"><a href="https://www.python.org/" title="Made with Python"><img src="https://img.shields.io/badge/Made%20with-Python-1f425f.svg" /></a></p>
 
 
 
