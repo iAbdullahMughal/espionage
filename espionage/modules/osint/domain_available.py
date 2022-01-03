@@ -6,7 +6,6 @@ from espionage.console import cAvailable
 
 
 class DomainAvailable:
-
     """
     Class contains code related to domain availability test. It will check if a domain
     is available for registration or not.
@@ -70,3 +69,4 @@ if __name__ == '__main__':
             RESULT = IS_AVAILABLE.domain_available()
             CONSOLE = cAvailable()
             CONSOLE.print(is_available=RESULT, domain=_domain)
+            print("\n")

@@ -4,10 +4,11 @@ import sys
 import threading
 import time
 from rich.console import Console
-
+from rich.text import Text
 from espionage.console.input import Input
-from espionage.console import cAvailable, cDomainWhois, cDomainHistory, cMain
+from espionage.console import cAvailable, cDomainWhois, cDomainHistory, cMain, cDetailedDns
 from espionage.modules.osint import DomainAvailable, DnsHistory, DomainBigData
+from espionage.modules.website import DetailedDns
 
 
 class Main:
@@ -57,6 +58,10 @@ class Main:
         # Check domain dns historical records
         c_dns_historical = DnsHistory(domain)
         report["domain_history"] = c_dns_historical.historical_data()
+
+        # Check current Domain dns details
+        c_dns_details = DetailedDns(domain)
+        report["detailed_dns"] = c_dns_details.dns_records()
         self._done = True
         time.sleep(.5)
         return report
@@ -74,16 +79,28 @@ class Main:
         :return: Nothing
         :rtype: None
         """
+        console = Console()
+        heading_text = Text()
+        heading_text.append("\tReport for ")
+        heading_text.append(f"{domain}\n", style="bold white on blue")
+
+        console.print(heading_text)
+
         da_console = cAvailable(console=console)
+        # da_console = DomainAvailability Console
         da_console.print(report["domain_availability"], domain)
 
         if report["whois_record"]:
-            db_console = cDomainWhois(console=console)
+            db_console = cDomainWhois(console=console)  # db_console = DomainBig Console
             db_console.print(report["whois_record"])
 
         if report["domain_history"]:
-            dh_console = cDomainHistory(console=console)
+            dh_console = cDomainHistory(console=console)  # dh_console = DomainHistory Console
             dh_console.print(report["domain_history"])
+
+        if report["detailed_dns"]:
+            dd_console = cDetailedDns(console=console)
+            dd_console.print(report["detailed_dns"])  # dd_console = DetailedDns Console
 
 
 def main():
@@ -116,6 +133,7 @@ def main():
                 console.print(json.dumps(report, indent=2))
             else:
                 c_report.print_report(report, console, _domain)
+                print("\n")
 
 
 if __name__ == '__main__':

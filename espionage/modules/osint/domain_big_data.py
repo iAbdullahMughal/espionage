@@ -305,3 +305,4 @@ if __name__ == '__main__':
             if RESULTS:
                 CONSOLE = CDBData()
                 CONSOLE.print(whois=RESULTS)
+            print("\n")

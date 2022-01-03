@@ -163,3 +163,4 @@ if __name__ == '__main__':
             if RESULTS:
                 CONSOLE = cDomainHistory()
                 CONSOLE.print(DOMAIN_HISTORY.historical_data())
+            print("\n")

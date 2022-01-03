@@ -12,7 +12,7 @@ class TestDomainAvailable(unittest.TestCase):
         self.assertEqual(domain_available.domain_available(), False)
 
     def test_iabdullahmughal_domain(self):
-        domain = "www.iabdullahmughal.com"
+        domain = "www.iteamdevelopers.org"
         domain_available = DomainAvailable(domain)
         self.assertEqual(domain_available.domain_available(), True)
 
