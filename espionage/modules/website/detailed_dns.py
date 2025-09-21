@@ -194,7 +194,7 @@ class DetailedDns:
         """
         dns_info = []
         endpoints = [
-            "http://www.dns-lg.com/us01/" + self._domain + "/a ",
+            "http://www.dns-lg.com/us01/" + self._domain + "/a",
             "http://www.dns-lg.com/us01/" + self._domain + "/cert",
             "http://www.dns-lg.com/us01/" + self._domain + "/dhc" + "id",
             "http://www.dns-lg.com/us01/" + self._domain + "/cname",
